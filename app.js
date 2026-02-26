@@ -21,3 +21,11 @@ app.get('/', async (req, res) => {
 
 // Start server
 app.listen(port, () => console.log(`Dashboard running on port ${port}`));
+
+process.on('uncaughtException', err => {
+  console.error('Uncaught Exception:', err);
+});
+
+process.on('unhandledRejection', err => {
+  console.error('Unhandled Rejection:', err);
+});
