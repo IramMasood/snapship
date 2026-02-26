@@ -1,5 +1,5 @@
 
-console.log("Node.js app starting...");const express = require('express');
+console.log("Node.js app starting...");
 const express = require('express');
 const { getConnection } = require('./db');
 
@@ -16,7 +16,7 @@ app.get('/', async (req, res) => {
     res.send(result.recordset);
   } catch (err) {
     console.error("SQL Error:", err);
-    res.send("Database connection failed (check db.js credentials and firewall).");
+    res.status(500).send("Database connection failed: " + err.message);
   }
 });
 
