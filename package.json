@@ -1,5 +1,6 @@
+
 {
-  "name": "snap-ship-webapp",
+  "name": "snapship-webapp",
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {

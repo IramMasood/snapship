@@ -1,4 +1,5 @@
-const express = require('express');
+
+console.log("Node.js app starting...");const express = require('express');
 const { getConnection } = require('./db');
 
 const app = express();
