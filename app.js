@@ -1,5 +1,3 @@
-
-console.log("Node.js app starting...");
 const express = require('express');
 const { getConnection } = require('./db');
 
@@ -12,6 +10,7 @@ console.log("Node.js app starting...");
 app.get('/', async (req, res) => {
   try {
     const pool = await getConnection();
+    if (!pool) throw new Error("DB pool not available");
     const result = await pool.request().query('SELECT * FROM Orders');
     res.send(result.recordset);
   } catch (err) {
@@ -20,5 +19,5 @@ app.get('/', async (req, res) => {
   }
 });
 
-// Always start the server
+// Start server
 app.listen(port, () => console.log(`Dashboard running on port ${port}`));

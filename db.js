@@ -1,6 +1,4 @@
-require('dotenv').config();
 const sql = require('mssql');
-
 const config = {
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
@@ -11,11 +9,12 @@ const config = {
 
 async function getConnection() {
   try {
-    let pool = await sql.connect(config);
+    const pool = await sql.connect(config);
     console.log("Connected to Azure SQL!");
     return pool;
   } catch (err) {
     console.error("Database Connection Error:", err);
+    return null; // prevent crash
   }
 }
 
